@@ -72,7 +72,7 @@ async def upload(
 async def upload_error(interaction: nextcord.Interaction, error: commands.CommandError):
     if isinstance(error, commands.CommandOnCooldown):
         return await interaction.followup.send(
-            f"❌ You are on cooldown! Please wait {error.retry_after, 1} seconds before trying again.", ephemeral=True
+            f"❌ You are on cooldown! Please wait {round(error.retry_after, 1)} seconds before trying again.", ephemeral=True
         )
     else:
         return await interaction.followup.send("❌ An error occurred!", ephemeral=True)
